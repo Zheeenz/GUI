@@ -4,7 +4,14 @@
  */
 package duoc.cl.app;
 
+import duoc.cl.app.DAO.Conexion;
 import duoc.cl.app.Views.viewAgregarPelicula;
+import duoc.cl.app.Views.viewBorrarPelicula;
+import duoc.cl.app.Views.viewEditarPelicula;
+import duoc.cl.app.Views.viewListarPelicula;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 /**
  *
@@ -17,6 +24,27 @@ public class App extends javax.swing.JFrame {
      */
     public App() {
         initComponents();
+        Conexion con = new Conexion();
+        Connection conexion = con.conectarMySQL();
+        
+        String consulta = " SELECT * FROM sys_config; ";
+
+        try{
+            PreparedStatement ps = conexion.prepareStatement(consulta);
+            ps.executeQuery(consulta);
+
+            while (ps.getResultSet().next()){
+                String valorColumna1 = ps.getResultSet().getString("variable");
+                String valorColumna2 = ps.getResultSet().getString("value");
+                String valorColumna3 = ps.getResultSet().getString("set_time");
+                String valorColumna4 = ps.getResultSet().getString("set_by");
+
+                System.out.println("Columna1: " + valorColumna1 + ", Columna2: " + valorColumna2 + ", Columna 3: " + valorColumna3 + ", Columna 4: " + valorColumna4);
+            }
+            
+        }catch(SQLException e){
+            System.out.println("mala");
+        }
     }
 
     /**
@@ -32,6 +60,9 @@ public class App extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -40,11 +71,11 @@ public class App extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1130, Short.MAX_VALUE)
+            .addGap(0, 1448, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 513, Short.MAX_VALUE)
+            .addGap(0, 769, Short.MAX_VALUE)
         );
 
         jMenu1.setText("File");
@@ -57,6 +88,30 @@ public class App extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem1);
 
+        jMenuItem2.setText("Editar Pelicula");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuItem3.setText("LIstado Pelicula");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
+        jMenuItem4.setText("Eliminar pelicula");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem4);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Edit");
@@ -68,13 +123,13 @@ public class App extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -84,6 +139,7 @@ public class App extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
+        
         //Creamos objeto
         viewAgregarPelicula peli = new viewAgregarPelicula();
         
@@ -93,6 +149,45 @@ public class App extends javax.swing.JFrame {
         //Mostrar objeto en escritorio
         peli.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        
+        //Crear objeto
+        viewEditarPelicula edit = new viewEditarPelicula();
+        
+        //Agregar objeto en dsk
+        escritorio.add(edit);
+        
+        //Hacer visible obj
+        edit.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        
+        //Crear objeto
+        viewListarPelicula list = new viewListarPelicula();
+        
+        //Agregar objeto en dsk
+        escritorio.add(list);
+        
+        //Hacer visible obj
+        list.setVisible(true);      
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        
+        //Crear objeto
+        viewBorrarPelicula borrar = new viewBorrarPelicula();
+        
+        //Agregar objeto en dsk
+        escritorio.add(borrar);
+        
+        //Hacer visible obj
+        borrar.setVisible(true); 
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,5 +231,8 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     // End of variables declaration//GEN-END:variables
 }
