@@ -5,6 +5,9 @@
 package duoc.cl.app;
 
 import duoc.cl.app.DAO.Conexion;
+import duoc.cl.app.DAO.GeneroDAO;
+import duoc.cl.app.DAO.PeliculaDAO;
+import duoc.cl.app.DTO.GeneroDTO;
 import duoc.cl.app.Views.viewAgregarPelicula;
 import duoc.cl.app.Views.viewBorrarPelicula;
 import duoc.cl.app.Views.viewEditarPelicula;
@@ -24,27 +27,42 @@ public class App extends javax.swing.JFrame {
      */
     public App() {
         initComponents();
+        
+        Conexion con = new Conexion();
+        GeneroDAO gen = new GeneroDAO(con);
+        PeliculaDAO pel = new PeliculaDAO(con);
+        
+        
+        System.out.println(gen.listarGeneros());
+        System.out.println(pel.listarPelicula());
+        
+        System.out.println(gen.modificarGenero(new GeneroDTO(1,"Acción")));
+        //gen.eliminarGenero(1);
+        gen.agregarGenero(new GeneroDTO(0, "Fantasía"));
+        
+        
+        /*
         Conexion con = new Conexion();
         Connection conexion = con.conectarMySQL();
         
-        String consulta = " SELECT * FROM sys_config; ";
+        String consulta = " SELECT * FROM GENERO; ";
 
         try{
             PreparedStatement ps = conexion.prepareStatement(consulta);
             ps.executeQuery(consulta);
 
             while (ps.getResultSet().next()){
-                String valorColumna1 = ps.getResultSet().getString("variable");
-                String valorColumna2 = ps.getResultSet().getString("value");
-                String valorColumna3 = ps.getResultSet().getString("set_time");
-                String valorColumna4 = ps.getResultSet().getString("set_by");
+                String valorColumna1 = ps.getResultSet().getString("ID");
+                String valorColumna2 = ps.getResultSet().getString("DESCRIPCION");
+   
 
-                System.out.println("Columna1: " + valorColumna1 + ", Columna2: " + valorColumna2 + ", Columna 3: " + valorColumna3 + ", Columna 4: " + valorColumna4);
+                System.out.println("Columna1: " + valorColumna1 + ", Columna2: " + valorColumna2 );
             }
             
         }catch(SQLException e){
             System.out.println("mala");
         }
+        */
     }
 
     /**

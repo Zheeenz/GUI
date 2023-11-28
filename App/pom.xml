@@ -11,12 +11,14 @@
         <maven.compiler.target>19</maven.compiler.target>
         <exec.mainClass>duoc.cl.app.App</exec.mainClass>
     </properties>
+    
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
-        </dependency>   
+        </dependency> 
     </dependencies>
     
 </project>

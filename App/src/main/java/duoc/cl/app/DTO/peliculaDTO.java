@@ -8,14 +8,16 @@ package duoc.cl.app.DTO;
  *
  * @author Zhnz
  */
-public class peliculaDTO {
+public class PeliculaDTO {
+    private int id;
     private String titulo;
     private String director;
     private int anio;
     private int duracion;
-    private String genero;
+    private int genero;
 
-    public peliculaDTO(String titulo, String director, int anio, int duracion, String genero) {
+    public PeliculaDTO(int id, String titulo, String director, int anio, int duracion, int genero) {
+        this.id = id;
         this.titulo = titulo;
         this.director = director;
         this.anio = anio;
@@ -23,14 +25,23 @@ public class peliculaDTO {
         this.genero = genero;
     }
    
-    public peliculaDTO() {
+    public PeliculaDTO() {
+        this.id = 0;
         this.titulo = "";
         this.director = "";
         this.anio = 0;
         this.duracion = 0;
-        this.genero = "";
+        this.genero = 0;
     } 
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getTitulo() {
         return titulo;
     }
@@ -63,11 +74,11 @@ public class peliculaDTO {
         this.duracion = duracion;
     }
 
-    public String getGenero() {
+    public int getGenero() {
         return genero;
     }
 
-    public void setGenero(String genero) {
+    public void setGenero(int genero) {
         this.genero = genero;
     }
 

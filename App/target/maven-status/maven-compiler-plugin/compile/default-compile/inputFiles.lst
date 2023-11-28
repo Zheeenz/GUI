@@ -1,7 +1,10 @@
-C:\Users\Zhnz\Documents\NetBeansProjects\App\src\main\java\duoc\cl\app\Views\viewBorrarPelicula.java
-C:\Users\Zhnz\Documents\NetBeansProjects\App\src\main\java\duoc\cl\app\Views\viewEditarPelicula.java
-C:\Users\Zhnz\Documents\NetBeansProjects\App\src\main\java\duoc\cl\app\Views\viewAgregarPelicula.java
-C:\Users\Zhnz\Documents\NetBeansProjects\App\src\main\java\duoc\cl\app\DTO\peliculaDTO.java
-C:\Users\Zhnz\Documents\NetBeansProjects\App\src\main\java\duoc\cl\app\Views\viewListarPelicula.java
-C:\Users\Zhnz\Documents\NetBeansProjects\App\src\main\java\duoc\cl\app\App.java
-C:\Users\Zhnz\Documents\NetBeansProjects\App\src\main\java\duoc\cl\app\DAO\Conexion.java
+C:\Users\Usuario\Downloads\GUI-main\App\src\main\java\duoc\cl\app\App.java
+C:\Users\Usuario\Downloads\GUI-main\App\src\main\java\duoc\cl\app\DTO\GeneroDTO.java
+C:\Users\Usuario\Downloads\GUI-main\App\src\main\java\duoc\cl\app\DTO\PeliculaDTO.java
+C:\Users\Usuario\Downloads\GUI-main\App\src\main\java\duoc\cl\app\Views\viewAgregarPelicula.java
+C:\Users\Usuario\Downloads\GUI-main\App\src\main\java\duoc\cl\app\DAO\Conexion.java
+C:\Users\Usuario\Downloads\GUI-main\App\src\main\java\duoc\cl\app\Views\viewEditarPelicula.java
+C:\Users\Usuario\Downloads\GUI-main\App\src\main\java\duoc\cl\app\Views\viewListarPelicula.java
+C:\Users\Usuario\Downloads\GUI-main\App\src\main\java\duoc\cl\app\Views\viewBorrarPelicula.java
+C:\Users\Usuario\Downloads\GUI-main\App\src\main\java\duoc\cl\app\DAO\PeliculaDAO.java
+C:\Users\Usuario\Downloads\GUI-main\App\src\main\java\duoc\cl\app\DAO\GeneroDAO.java
